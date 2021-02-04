@@ -1,7 +1,7 @@
 {
-  "name": "BOT KAMPANG",
-  "description": "[BOT KAMPANG] A modular Telegram userbot running on Python 3.7+ with an sqlalchemy database, which can be coupled up with Mongo DB and a Redis backend",
-  "logo": "https://telegra.ph/file/ecacf51f2ee342ba5d3e1.jpg",
+  "name": "Yama",
+  "description": "[Yama] A modular Telegram userbot running on Python 3.7+ with an sqlalchemy database, which can be coupled up with Mongo DB and a Redis backend",
+  "logo": "https://telegra.ph/file/03cda8fe219b30f6d847d.jpg",
   "keywords": [
     "telegram",
     "userbot",
@@ -9,9 +9,9 @@
     "modular",
     "productivity"
   ],
-  "repository": "https://github.com/Camel07/XBot-Remix",
+  "repository": "https://github.com/IrhamFadzillah/Yama",
   "website": "https://telegra.ph/How-to-host-a-Telegram-Userbot-11-02",
-  "success_url": "https://t.me/mixiologist",
+  "success_url": "https://t.me/StayWithMe69",
   "stack": "container",
   "env": {
     "API_KEY": {

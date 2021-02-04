@@ -100,7 +100,7 @@ GITHUB_ACCESS_TOKEN = os.environ.get("GITHUB_ACCESS_TOKEN", None)
 # Custom (forked) repo URL for updater.
 UPSTREAM_REPO_URL = os.environ.get(
     "UPSTREAM_REPO_URL",
-    "https://github.com/Camel07/XBot-Remix.git")
+    "https://github.com/IrhamFadzillah/Yama.git")
 UPSTREAM_REPO_BRANCH = os.environ.get(
     "UPSTREAM_REPO_BRANCH", "x-sql-extended")
 
@@ -176,7 +176,7 @@ S_PACK_NAME = os.environ.get("S_PACK_NAME", None)
 
 # Default .alive logo
 ALIVE_LOGO = os.environ.get(
-    "ALIVE_LOGO") or "https://telegra.ph/file/57b5bff10eeeb5110c493.mp4"
+    "ALIVE_LOGO") or "https://telegra.ph/file/03cda8fe219b30f6d847d.jpg"
 
 # Last.fm Module
 BIO_PREFIX = os.environ.get("BIO_PREFIX", None)
@@ -315,7 +315,7 @@ with bot:
 
 
 async def check_alive():
-    await bot.send_message(BOTLOG_CHATID, "```🐨BOT KAMPANG🐨\nMENYALA ANJEEENG```")
+    await bot.send_message(BOTLOG_CHATID, "```Yama Telah Aktif```")
     return
 
 with bot:
@@ -345,7 +345,7 @@ def paginate_help(page_number, loaded_modules, prefix):
     helpable_modules = [p for p in loaded_modules if not p.startswith("_")]
     helpable_modules = sorted(helpable_modules)
     modules = [
-        custom.Button.inline("{} {}".format("🐨", x), data="ub_modul_{}".format(x))
+        custom.Button.inline("{} {}".format("", x), data="ub_modul_{}".format(x))
         for x in helpable_modules
     ]
     pairs = list(zip(modules[::number_of_cols],
@@ -386,7 +386,7 @@ with bot:
         @tgbot.on(events.NewMessage(pattern="/start"))
         async def handler(event):
             if event.message.from_id != uid:
-                await event.reply("I'm [BOT KAMPANG](https://github.com/Camel07/XBot-Remix) modules helper...\nplease make your own bot, don't use mine 😋")
+                await event.reply("I'm [Yama](https://github.com/IrhamFadzillah/Yama) modules helper...\nplease make your own bot, don't use mine 😋")
             else:
                 await event.reply(f"`Hey there {ALIVE_NAME}\n\nI work for you :)`")
 
@@ -399,8 +399,8 @@ with bot:
                 buttons = paginate_help(0, dugmeler, "helpme")
                 result = builder.article(
                     "Please Use Only With .help Command",
-                    text="{}\nTotal loaded Modules: {}\n               \n🐨 **MODULE INFO KAMPANG** 🐨\n".format(
-                        "🐨BOT KAMPANG🐨 modules helper",
+                    text="{}\nTotal loaded Modules: {}\n               \n **Info Module Yama** \n".format(
+                        "Yama modules helper",
                         len(dugmeler),
                     ),
                     buttons=buttons,
@@ -408,22 +408,22 @@ with bot:
                 )
             elif query.startswith("tb_btn"):
                 result = builder.article(
-                    "🐨BOT KAMPANG🐨 Helper",
+                    "Yama Helper",
                     text="List of Modules",
                     buttons=[],
                     link_preview=True)
             else:
                 result = builder.article(
-                    "BOT KAMPANG",
+                    "Yama",
                     text="""You can convert your account to bot and use them. Remember, you can't manage someone else's bot! All installation details are explained from GitHub address below.""",
                     buttons=[
                         [
                             custom.Button.url(
                                 "GitHub Repo",
-                                "https://github.com/Camel07/XBot-Remix"),
+                                "https://github.com/IrhamFadzillah/Yama"),
                             custom.Button.url(
                                 "Support",
-                                "https://t.me/mixiologist")],
+                                "https://t.me/NightCoreUserbot")],
                     ],
                     link_preview=False,
                 )
