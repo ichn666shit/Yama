@@ -24,13 +24,6 @@ async def help(event):
             await asyncio.sleep(18)
             await event.delete()
     else:
-        await event.edit(f"** **\
-            \n"\   Help for [Yama Bot]
-                         \n"\
-            \n"\   Untuk melihat lengkap Command
-                         \n"\\   Contoh: .help <nama module>\
-            \n"\   Modules Aktif: {len(modules)}
-                         \n")
         string = ""
         for i in CMD_HELP:
             string += "`" + str(i)
