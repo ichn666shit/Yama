@@ -25,17 +25,16 @@ async def help(event):
             await event.delete()
     else:
         await event.edit(f"\
-            \n     Help for Yama\
             \n   Untuk melihat lengkap Command\
             \n   Contoh: .help <nama module>\
             \n   Modules Aktif: {len(modules)}\
-           \n")
+            \n   Ketik Contoh `.help afk` Untuk Informasi Module\
+          \n")
         string = ""
         for i in CMD_HELP:
             string += "`" + str(i)
             string += "`\t• "
-        await event.reply(f"•{string}•"
+        await event.reply(f"•{string}"
                           "\n")
-        await event.reply(f"\nKetik Contoh `.help afk` Untuk Informasi Module")
         await asyncio.sleep(1000)
         await event.delete()

@@ -1,13 +1,18 @@
 from time import sleep
+
 from userbot import CMD_HELP
 from userbot.events import register
 
 
-@register(outgoing=True, pattern=r'^\.kill(?: |$)(.*)')
+@register(outgoing=True, pattern=r"^\.santet(?: |$)(.*)")
 async def typewriter(typew):
     typew.pattern_match.group(1)
-    await typew.edit("`Mau Gue Santet Lu Broo?..`")
-    sleep(4)
+    await typew.edit("`Telah Mengaktifkan Perintah Santet Online ツ`")
+    sleep(2)
+    await typew.edit("`Mencari Nama Orang Ini...`")
+    sleep(1)
+    await typew.edit("`Santet Online Segera Dilakukan`")
+    sleep(1)
     await typew.edit("0%")
     number = 1
     await typew.edit(str(number) + "%   ▎")
@@ -309,12 +314,12 @@ async def typewriter(typew):
     sleep(0.03)
     await typew.edit(str(number) + "%   ████████████████▌")
     sleep(1)
-    await typew.edit("Tapi Boong......:v")
-    # I did it for two hours :D just ctrl+c - crtl+v
+    await typew.edit("`Target Berhasil Tersantet Online:v`")
 
 
-CMD_HELP.update({
-    'fakeload':
-    '.kill\
-        \nUsage: Gagal Santet.'
-})
+CMD_HELP.update(
+    {
+        "santet": "`.santet`\
+        \nUsage: Canda Santet."
+    }
+)

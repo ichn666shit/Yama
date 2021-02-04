@@ -8,10 +8,10 @@ DEFAULTUSER = str(ALIVE_NAME) if ALIVE_NAME else uname().node
 # ============================================
 
 
-@register(outgoing=True, pattern="^.remixhelp$")
+@register(outgoing=True, pattern="^.yamahelp$")
 async def usit(e):
     await e.edit(
-        f"Here's something for {DEFAULTUSER} to use it for help_on_update on **XBot-Remix**:\n"
+        f"Here's something for {DEFAULTUSER} to use it for help_on_update on **Yama**:\n"
         "\n[Windows Method](https://telegra.ph/How-to-keep-repo-updated-while-keeping-your-changes-through-windows-cmd-method-04-01)"
         "\n[Termux Method](https://telegra.ph/How-to-keep-XBot-Remix-repo-updated-while-keeping-your-changes-through-Termux--kali-linux-06-02)"
         "\n[Kali Linux Method](https://telegra.ph/How-to-keep-OpenUserBot-repo-updated-while-keeping-your-changes-through-Termux-method-04-01)"
@@ -20,17 +20,17 @@ async def usit(e):
         "\n[video-tutorial](https://youtu.be/us1O-AnWmHA)")
 
 
-@register(outgoing=True, pattern="^.remixvar$")
+@register(outgoing=True, pattern="^.yamavar$")
 async def var(m):
     await m.edit(
-        f"Here's a list of VARS for {DEFAULTUSER} on **XBot-Remix**:\n"
-        "\n[HEROKU VARS](https://raw.githubusercontent.com/X-Newbie/XBot-Remix/x-sql-extended/varshelper.txt)")
+        f"Here's a list of VARS for {DEFAULTUSER} on **Yama**:\n"
+        "\n[HEROKU VARS](https://raw.githubusercontent.com/IrhamFadzillah/Yama/x-sql-extended/varshelper.txt)")
 
 
 CMD_HELP.update({
-    "remixhelper":
-    "`.remixhelp`\
+    "yamahelper":
+    "`.yamahelp`\
 \nUsage: Provide links to update repo guides while you keep your changes on the floor.\
-\n`.remixvar`\
+\n`.yamavar`\
 \nUsage: Provide vars to cross check for you."
 })
