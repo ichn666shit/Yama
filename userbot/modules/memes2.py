@@ -127,7 +127,5 @@ CMD_HELP.update(
     \n\n`.sadboy`\
     \nUsage: hiks\
     \n\n`.punten` ; `.pantau`\
-    \nUsage: coba aja.\
-
-    }
-)
+    \nUsage: coba aja."
+})
