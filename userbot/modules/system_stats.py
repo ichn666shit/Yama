@@ -228,7 +228,7 @@ async def pipcheck(pip):
 
 @register(outgoing=True, pattern=r"^\.(?:alive|on)\s?(.)?")
 async def amireallyalive(alive):
-    user = await bot.get_me()
+    await bot.get_me()
     uptime = await get_readable_time((time.time() - StartTime))
     output = (
         f"`Yama` is running on  `{UPSTREAM_REPO_BRANCH}`\n"
