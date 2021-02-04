@@ -28,11 +28,12 @@
     },
     "HEROKU_APP_NAME": {
       "description": "Add the Heroku app name here. It helps with userbot updates.",
+      "value": ""
       "required": true
     },
     "HEROKU_API_KEY": {
       "description": "Your Heroku API key, get it from 'https://dashboard.heroku.com/account'",
-      "value": "cek di dashboard heroku",
+      "value": "",
       "required": true
     },
     "BOTLOG": {
@@ -163,7 +164,7 @@
     },
     "G_BAN_LOGGER_GROUP": {
       "description": "Add all sudo bots in your group and type id of that group.",
-      "value": "isi id group lu tolol",
+      "value": "",
       "required": false
     },
     "G_DRIVE_DATA": {
@@ -178,13 +179,8 @@
       "description": "get the client secret from https://j.mp/39lWQQm",
       "required": false
     },
-    "BITLY_TOKEN": {
-      "description": "Your Bit.ly API key, get it from 'https://bitly.com/a/sign_up'",
-      "value": "",
-      "required": false
-    },
     "UB_BLACK_LIST_CHAT": {
-      "description": "Serahlu",
+      "description": "",
       "required": false
     },
     "LYDIA_API_KEY": {
@@ -193,7 +189,7 @@
     },
     "WEATHER_DEFCITY": {
       "description": "Set the default city for the userbot's weather module.",
-      "value": "lu tinggal dimana kenalan yuk",
+      "value": "",
       "required": false
     },
     "LOGSPAMMER": {
@@ -207,6 +203,7 @@
     },
     "UPSTREAM_REPO_URL": {
       "description": "In case you maintain a fork, add your repo URL here.",
+      "value": "https://github.com/IrhamFadzillah/Yama",
       "required": false
     },
     "BOT_TOKEN": {
