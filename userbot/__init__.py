@@ -353,7 +353,8 @@ def paginate_help(page_number, loaded_plugins, prefix):
     if number_of_cols == 1:
         pairs = list(zip(modules[::number_of_cols]))
     elif number_of_cols == 2:
-        pairs = list(zip(modules[::number_of_cols], modules[1::number_of_cols]))
+        pairs = list(zip(modules[::number_of_cols],
+                         modules[1::number_of_cols]))
     else:
         pairs = list(
             zip(
