@@ -164,15 +164,14 @@ async def bot_ver(event):
         stdout, stderr = await rev.communicate()
         revout = str(stdout.decode().strip()) + str(stderr.decode().strip())
 
-        await event.edit(
-            "`\n
-            "` Yama Version: \n "
-            f"{verout}"
-            "` \n"
-            "   Revision: "
-            f"{revout}🇲🇨\n"
-            " "
-        )
+        await event.edit("`\n
+                         "` Yama Version: \n "
+                         f"{verout}"
+                         "` \n"
+                         "   Revision: "
+                         f"{revout}🇲🇨\n"
+                         " "
+                         )
     else:
         await event.edit(
             "Shame that you don't have git, you're running - 'v1.beta.4' anyway!"
@@ -241,7 +240,7 @@ async def amireallyalive(alive):
         f"Version  :`{BOT_VER}\n"
         f"Modules  :`{len(modules)} Loaded\n"
         f"Uptime   :`{uptime} \n"
-  )
+    )
     if ALIVE_LOGO:
         try:
             logo = ALIVE_LOGO

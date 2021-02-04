@@ -7,16 +7,18 @@ from userbot.events import register
 DEFAULTUSER = str(ALIVE_NAME) if ALIVE_NAME else uname().node
 # ============================================
 
+
 @register(outgoing=True, pattern='^kntl(?: |$)(.*)')
 async def typewriter(typew):
     typew.pattern_match.group(1)
     sleep(1)
     await typew.edit(f"**LU KONTOL**")
     sleep(3)
-    await typew.edit("`KONTOL KONTOL KONTOL!!!`") 
+    await typew.edit("`KONTOL KONTOL KONTOL!!!`")
     sleep(3)
     await typew.edit("`DASAR KEPALA KONTOL!!!`")
 # Owner @Si_Dian
+
 
 @register(outgoing=True, pattern='^G(?: |$)(.*)')
 async def typewriter(typew):
