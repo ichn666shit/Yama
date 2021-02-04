@@ -40,6 +40,5 @@ async def _(event):
         await event.edit("`Error: ``@nHentaiBot`` is not responding!`")
 
 
-CMD_HELP.update(
-    {"nhentai": ">`.nhentai` <link / code>" "\nUsage: view nhentai in telegra.ph XD\n"}
-)
+CMD_HELP.update({"nhentai": ">`.nhentai` <link / code>"
+                 "\nUsage: view nhentai in telegra.ph XD\n"})
