@@ -336,33 +336,18 @@ AFKREASON = None
 ZALG_LIST = {}
 
 
-def paginate_help(page_number, loaded_plugins, prefix):
-    number_of_rows = Config.NO_OF_BUTTONS_DISPLAYED_IN_H_ME_CMD
-    number_of_cols = Config.NO_OF_COLOUMS_DISPLAYED_IN_H_ME_CMD
-    helpable_plugins = [p for p in loaded_plugins if not p.startswith("_")]
-    helpable_plugins = sorted(helpable_plugins)
+def paginate_help(page_number, loaded_modules, prefix):
+    number_of_rows = 5
+    number_of_cols = 4
+    helpable_modules = [p for p in loaded_modules if not p.startswith("_")]
+    helpable_modules = sorted(helpable_modules)
     modules = [
-        custom.Button.inline(
-            "{} {} {}".format(
-                Config.EMOJI_TO_DISPLAY_IN_HELP, x, Config.EMOJI_TO_DISPLAY_IN_HELP
-            ),
-            data="us_plugin_{}".format(x),
-        )
-        for x in helpable_plugins
+        custom.Button.inline("{} {}".format("", x), data="ub_modul_{}".format(x))
+        for x in helpable_modules
     ]
-    if number_of_cols == 1:
-        pairs = list(zip(modules[::number_of_cols]))
-    elif number_of_cols == 2:
-        pairs = list(zip(modules[::number_of_cols],
-                         modules[1::number_of_cols]))
-    else:
-        pairs = list(
-            zip(
-                modules[::number_of_cols],
-                modules[1::number_of_cols],
-                modules[2::number_of_cols],
-            )
-        )
+    pairs = list(zip(modules[::number_of_cols],
+                     modules[1::number_of_cols],
+                     modules[2::number_of_cols]))
     if len(modules) % number_of_cols == 1:
         pairs.append((modules[-1],))
     elif len(modules) % number_of_cols == 2:
