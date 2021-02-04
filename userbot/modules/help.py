@@ -25,7 +25,7 @@ async def help(event):
             await event.delete()
     else:
         await event.edit(f"\
-            \n   Help for Yama\
+            \n     Help for Yama\
             \n   Untuk melihat lengkap Command\
             \n   Contoh: .help <nama module>\
             \n   Modules Aktif: {len(modules)}\
