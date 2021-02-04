@@ -65,23 +65,23 @@ async def sleepybot(time):
 @register(outgoing=True, pattern="^.shutdown$")
 async def killdabot(event):
     """ For .shutdown command, shut the bot down."""
-    await event.edit("`Shutdown *BOT KAMPANG 🐨*....`")
+    await event.edit("`Shutdown bot Yama....`")
     await asyncio.sleep(7)
     await event.delete()
     if BOTLOG:
-        await event.client.send_message(BOTLOG_CHATID, "#SHUTDOWN \n"
-                                        "Bot Has Been Slain!!")
+        await event.client.send_message(BOTLOG_CHATID, "#Shutdown \n"
+                                        "Yama Bot Telah di Shutdown!!")
     await bot.disconnect()
 
 
 @register(outgoing=True, pattern="^.restart$")
 async def killdabot(event):
-    await event.edit("`Restarting BOT KAMPANG🐨....`")
+    await event.edit("`Restarting Bot Yama....`")
     await asyncio.sleep(10)
     await event.delete()
     if BOTLOG:
-        await event.client.send_message(BOTLOG_CHATID, "#RESTART \n"
-                                        "Bot Meninggoy!")
+        await event.client.send_message(BOTLOG_CHATID, "#Restart \n"
+                                        "Yama Bot Sedang Di Restart!")
     await bot.disconnect()
     # Spin a new instance of bot
     execl(sys.executable, sys.executable, *sys.argv)
@@ -93,7 +93,7 @@ async def killdabot(event):
 async def reedme(e):
     await e.edit(
         "Here's something for you to read:\n"
-        "\n[OpenUserBot's README.md file](https://github.com/mkaraniya/OpenUserBot/blob/sql-extended/README.md)"
+        "\n[Yama README.md file](https://github.com/IrhamFadzillah/Yama/blob/sql-extended/README.md)"
         "\n[Setup Guide - Basic](https://telegra.ph/How-to-host-a-Telegram-Userbot-11-02)"
         "\n[Setup Guide - Google Drive](https://telegra.ph/How-To-Setup-GDrive-11-02)"
         "\n[Setup Guide - LastFM Module](https://telegra.ph/How-to-set-up-LastFM-module-for-Paperplane-userbot-11-02)"
@@ -120,23 +120,7 @@ async def repeat(rep):
 async def repo_is_here(wannasee):
     """ For .repo command, just returns the repo URL. """
     await wannasee.edit(
-        "╭••••••••𖠄••••••••╮🐨╭••••••••𖠄••••••••╮\n \n[┣━•━─[ B🐨T°KAMPANG ]─━•━┫](https://github.com/Camel07/XBot-Remix) \n \n╰••••••••𖠄••••••••╯🐨╰••••••••𖠄••••••••╯\n     \n"
-    )
-
-
-@register(outgoing=True, pattern="^.string$")
-async def repo_is_here(wannasee):
-    """ For .string command, just returns the string URL. """
-    await wannasee.edit(
-        "🐨 **Get String:** [Press For GetString](https://repl.it/@ManusiaRakitan/stringsession#README.md)"
-    )
-
-
-@register(outgoing=True, pattern="^.usergay$")
-async def repo_is_here(wannasee):
-    """ For .usergay command, just returns the repo URL. """
-    await wannasee.edit(
-        "🐨 **Repo UsergayKampang:** [UsergayKamlang](https://github.com/Camel07/UsergayKampang)"
+        "╭••••••••𖠄••••••••╮╭••••••••𖠄••••••••╮\n \n[┣━•━─[ Yama ]─━•━┫](https://github.com/IrhamFadzillah/Yama) \n \n╰••••••••𖠄••••••••╯╰••••••••𖠄••••••••╯\n     \n"
     )
 
 
@@ -175,7 +159,7 @@ async def okgoogle(img):
         photo = io.BytesIO()
         await bot.download_media(message, photo)
     else:
-        await img.edit("`Balas di Gambar Goblokk!!.`")
+        await img.edit("`Balas di Gambar!!.`")
         return
 
     if photo:
