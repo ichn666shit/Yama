@@ -20,24 +20,23 @@ async def help(event):
         if args in CMD_HELP:
             await event.edit(str(CMD_HELP[args]))
         else:
-            await event.edit("**Module Salah KAMPAAAANGGGGG!!**")
+            await event.edit("Module Tidak Di Temukan")
             await asyncio.sleep(18)
             await event.delete()
     else:
-        await event.edit(f"**╭►▻►▻►▻►▻►▻►◄◅◄◅◄◅◄◅◄◅╮**\
-            \n│   Help for [🐨BOT KAMPANG🐨]\
-            \n╰►▻►▻►▻►▻►▻►◄◅◄◅◄◅◄◅◄◅╯ \
-            \n╭►▻►▻►▻►▻►▻►◄◅◄◅◄◅◄◅◄◅╮\
-            \n│   Untuk melihat lengkap Command\
-            \n│   Contoh: .help <nama module>\
-            \n│   Modules Aktif: {len(modules)}\
-           \n╰►▻►▻►▻►▻►▻►◄◅◄◅◄◅◄◅◄◅╯")
+        await event.edit(f"** **\
+            \n"\   Help for [Yama Bot]\
+            \n"\
+            \n"\   Untuk melihat lengkap Command\
+            \n"\   Contoh: .help <nama module>\
+            \n"\   Modules Aktif: {len(modules)}\
+           \n")
         string = ""
         for i in CMD_HELP:
             string += "`" + str(i)
-            string += "`\t✪ "
-        await event.reply(f"•{string}•"
-                          "\nʕ≧ᴥ≦ʔʕ≧ᴥ≦ʔʕ≧ᴥ≦ʔ")
+            string += "`\t] "
+        await event.reply(f"[{string}•"
+                          "\n")
         await event.reply(f"\n**Ketik Contoh** `.help afk` **Untuk Informasi Module**")
         await asyncio.sleep(1000)
         await event.delete()
