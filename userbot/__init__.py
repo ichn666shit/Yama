@@ -159,11 +159,8 @@ CLEAN_WELCOME = sb(os.environ.get("CLEAN_WELCOME", "True"))
 # Zipfile module
 ZIP_DOWNLOAD_DIRECTORY = os.environ.get("ZIP_DOWNLOAD_DIRECTORY", "./zips")
 
-# bit.ly module
-BITLY_TOKEN = os.environ.get("BITLY_TOKEN", None)
-
 # Bot Name
-TERM_ALIAS = os.environ.get("TERM_ALIAS", "XBOT-REMIX")
+TERM_ALIAS = os.environ.get("TERM_ALIAS", "Yama")
 
 # Bot version
 BOT_VER = os.environ.get("BOT_VER", "4.0")
@@ -361,10 +358,10 @@ def paginate_help(page_number, loaded_modules, prefix):
         ] + [
             (
                 custom.Button.inline(
-                    "⌫️", data="{}_prev({})".format(prefix, modulo_page)
+                    "<", data="{}_prev({})".format(prefix, modulo_page)
                 ),
                 custom.Button.inline(
-                    "⌦️", data="{}_next({})".format(prefix, modulo_page)
+                    ">", data="{}_next({})".format(prefix, modulo_page)
                 )
             )
         ]
