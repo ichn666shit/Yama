@@ -81,6 +81,7 @@ youtube_search
 youtube-dl
 justwatch
 deezloader
+nekos.py
 zipfile38
 bitlyshortener
 geopy
