@@ -82,13 +82,13 @@ async def typewriter(typew):
                      "╬═╬ Hallo Semuanya :) \n"
                      "╬═╬☻/ \n"
                      "╬═╬/▌ \n"
-                     "╬═╬/ \ \n")
+                     "╬═╬/ \\ \n")
 
 
 @register(outgoing=True, pattern='^.tembak(?: |$)(.*)')
 async def typewriter(typew):
     typew.pattern_match.group(1)
-    await typew.edit("_/﹋\_\n"
+    await typew.edit("_/﹋\\_\n"
                      "(҂`_´)\n"
                      "<,︻╦╤─ ҉\n"
                      r"_/﹋\_"
