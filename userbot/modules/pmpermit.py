@@ -27,8 +27,7 @@ DEF_UNAPPROVED_MSG = (
     "Wait for me to approve your PM.\n"
     "Until then, don't spam my PM or you'll get blocked and reported as spam...\n"
     "CAPICHE?\n\n"
-    "-Userbot"
-)
+    "-Userbot")
 # =================================================================
 
 
