@@ -28,7 +28,7 @@
     },
     "HEROKU_APP_NAME": {
       "description": "Add the Heroku app name here. It helps with userbot updates.",
-      "value": ""
+      "value": "",
       "required": true
     },
     "HEROKU_API_KEY": {
