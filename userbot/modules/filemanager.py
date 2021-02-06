@@ -1,9 +1,19 @@
+# Credits to Userge for Remove and Rename
+
 import io
 import os
 import os.path
+import re
+import shutil
 import time
-from os.path import exists, isdir
+from datetime import datetime
+from os.path import basename, dirname, exists, isdir, isfile, join, relpath
+from shutil import rmtree
+from zipfile import ZIP_DEFLATED, ZipFile, is_zipfile
 
+from rarfile import RarFile, is_rarfile
+
+from userbot import CMD_HELP, TEMP_DOWNLOAD_DIRECTORY
 from userbot.events import register
 from userbot.utils import humanbytes
 
@@ -18,7 +28,7 @@ async def lst(event):
     path = cat if cat else os.getcwd()
     if not exists(path):
         await event.edit(
-            f"**There is no such directory or file with the name `{cat}` check again!**"
+            f"There is no such directory or file with the name `{cat}` check again!"
         )
         return
     if isdir(path):
@@ -34,40 +44,41 @@ async def lst(event):
             if not isdir(catpath):
                 size = os.stat(catpath).st_size
                 if contents.endswith((".mp3", ".flac", ".wav", ".m4a")):
-                    files += "🎵 " + f"`{contents}`\n"
-                if contents.endswith((".opus")):
-                    files += "🎙 " + f"`{contents}`\n"
+                    files += "🎵 "
+                elif contents.endswith((".opus")):
+                    files += "🎙 "
                 elif contents.endswith(
                     (".mkv", ".mp4", ".webm", ".avi", ".mov", ".flv")
                 ):
-                    files += "🎞 " + f"`{contents}`\n"
+                    files += "🎞 "
                 elif contents.endswith(
                     (".zip", ".tar", ".tar.gz", ".rar", ".7z", ".xz")
                 ):
-                    files += "🗜 " + f"`{contents}`\n"
+                    files += "🗜 "
                 elif contents.endswith(
                     (".jpg", ".jpeg", ".png", ".gif", ".bmp", ".ico", ".webp")
                 ):
-                    files += "🖼 " + f"`{contents}`\n"
+                    files += "🖼 "
                 elif contents.endswith((".exe", ".deb")):
-                    files += "⚙️ " + f"`{contents}`\n"
+                    files += "⚙️ "
                 elif contents.endswith((".iso", ".img")):
-                    files += "💿 " + f"`{contents}`\n"
+                    files += "💿 "
                 elif contents.endswith((".apk", ".xapk")):
-                    files += "📱 " + f"`{contents}`\n"
+                    files += "📱 "
                 elif contents.endswith((".py")):
-                    files += "🐍 " + f"`{contents}`\n"
+                    files += "🐍 "
                 else:
-                    files += "📄 " + f"`{contents}`\n"
+                    files += "📄 "
+                files += f"`{contents}` (__{humanbytes(size)}__)\n"
             else:
                 folders += f"📁 `{contents}`\n"
         msg = msg + folders + files if files or folders else msg + "__empty path__"
     else:
         size = os.stat(path).st_size
-        msg = "**The details of given file** :\n\n"
+        msg = "The details of given file :\n\n"
         if path.endswith((".mp3", ".flac", ".wav", ".m4a")):
             mode = "🎵 "
-        if path.endswith((".opus")):
+        elif path.endswith((".opus")):
             mode = "🎙 "
         elif path.endswith((".mkv", ".mp4", ".webm", ".avi", ".mov", ".flv")):
             mode = "🎞 "
@@ -107,3 +118,122 @@ async def lst(event):
             await event.delete()
     else:
         await event.edit(msg)
+
+
+@register(outgoing=True, pattern=r"^\.rm ?(.*)")
+async def rmove(event):
+    """Removing Directory/File"""
+    cat = event.pattern_match.group(1)
+    if not cat:
+        await event.edit("`Missing file path!`")
+        return
+    if not exists(cat):
+        await event.edit("`File path not exists!`")
+        return
+    if isfile(cat):
+        os.remove(cat)
+    else:
+        rmtree(cat)
+    await event.edit(f"Removed `{cat}`")
+
+
+@register(outgoing=True, pattern=r"^\.rn ([^|]+)\|([^|]+)")
+async def rname(event):
+    """Renaming Directory/File"""
+    cat = str(event.pattern_match.group(1)).strip()
+    new_name = str(event.pattern_match.group(2)).strip()
+    if not exists(cat):
+        await event.edit(f"file path : {cat} not exists!")
+        return
+    new_path = join(dirname(cat), new_name)
+    shutil.move(cat, new_path)
+    await event.edit(f"Renamed `{cat}` to `{new_path}`")
+
+
+@register(outgoing=True, pattern=r"^\.zip (.*)")
+async def zip(event):
+    if event.fwd_from:
+        return
+    input_str = event.pattern_match.group(1)
+    path = input_str
+    zip_name = ""
+    if "|" in input_str:
+        path, zip_name = path.split("|")
+        path = path.strip()
+        zip_name = zip_name.strip()
+    if exists(path):
+        await event.edit("`Zipping...`")
+        start_time = datetime.now()
+        if isdir(path):
+            dir_path = path.split("/")[-1]
+            if path.endswith("/"):
+                dir_path = path.split("/")[-2]
+            zip_path = join(TEMP_DOWNLOAD_DIRECTORY, dir_path) + ".zip"
+            if zip_name:
+                zip_path = join(TEMP_DOWNLOAD_DIRECTORY, zip_name)
+                if not zip_name.endswith(".zip"):
+                    zip_path += ".zip"
+            with ZipFile(zip_path, "w", ZIP_DEFLATED) as zip_obj:
+                for roots, _, files in os.walk(path):
+                    for file in files:
+                        files_path = join(roots, file)
+                        arc_path = join(dir_path, relpath(files_path, path))
+                        zip_obj.write(files_path, arc_path)
+            end_time = (datetime.now() - start_time).seconds
+            await event.edit(
+                f"Zipped `{path}` into `{zip_path}` in `{end_time}` seconds."
+            )
+        elif isfile(path):
+            file_name = basename(path)
+            zip_path = join(TEMP_DOWNLOAD_DIRECTORY, file_name) + ".zip"
+            if zip_name:
+                zip_path = join(TEMP_DOWNLOAD_DIRECTORY, zip_name)
+                if not zip_name.endswith(".zip"):
+                    zip_path += ".zip"
+            with ZipFile(zip_path, "w", ZIP_DEFLATED) as zip_obj:
+                zip_obj.write(path, file_name)
+            await event.edit(f"Zipped `{path}` into `{zip_path}`")
+    else:
+        await event.edit("`404: Not Found`")
+
+
+@register(outgoing=True, pattern=r"^\.unzip (.*)")
+async def unzip(event):
+    if event.fwd_from:
+        return
+    input_str = event.pattern_match.group(1)
+    file_name = basename(input_str)
+    output_path = TEMP_DOWNLOAD_DIRECTORY + re.split("(.zip|.rar)", file_name)[0]
+    if exists(input_str):
+        await event.edit("`Unzipping...`")
+        if is_zipfile(input_str):
+            zip_type = ZipFile
+        elif is_rarfile(input_str):
+            zip_type = RarFile
+        else:
+            return await event.edit("`Unsupported file types!`\n`ZIP and RAR only`")
+        try:
+            with zip_type(input_str, "r") as zip_obj:
+                zip_obj.extractall(output_path)
+        except BaseException as err:
+            await event.edit(f"**Error:** `{err}`")
+        await event.edit(f"Unzipped `{input_str}` into `{output_path}`")
+    else:
+        await event.edit("`404: Not Found`")
+
+
+CMD_HELP.update(
+    {
+        "file": ">`.ls` <directory>"
+        "\nUsage: Get list file inside directory."
+        "\n\n>`.rm` <directory/file>"
+        "\nUsage: Remove file or directory"
+        "\n\n>`.rn` <directory/file> | <new name>"
+        "\nUsage: Rename file or directory"
+        "\n\n>`.zip` <file/folder path> | <zip name> (optional)"
+        "\nUsage: For zipping file or folder."
+        "\n\n>`.unzip` <path to zip file>"
+        "\nUsage: For extracting archive file"
+        "\nOnly support ZIP and RAR file!"
+    }
+)
