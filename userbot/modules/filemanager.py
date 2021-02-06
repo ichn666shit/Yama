@@ -203,7 +203,8 @@ async def unzip(event):
         return
     input_str = event.pattern_match.group(1)
     file_name = basename(input_str)
-    output_path = TEMP_DOWNLOAD_DIRECTORY + re.split("(.zip|.rar)", file_name)[0]
+    output_path = TEMP_DOWNLOAD_DIRECTORY + \
+        re.split("(.zip|.rar)", file_name)[0]
     if exists(input_str):
         await event.edit("`Unzipping...`")
         if is_zipfile(input_str):
