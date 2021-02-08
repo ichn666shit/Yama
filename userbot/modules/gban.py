@@ -13,7 +13,7 @@ from telethon.errors import BadRequestError
 from telethon.tl.functions.channels import EditBannedRequest
 from telethon.tl.functions.messages import ImportChatInviteRequest
 
-import userbot.plugins.sql_helper.gban_sql_helper as gban_sql
+import userbot.plugins.sql_helper.gban_sql_helper as gban_sql_helper
 
 
 @bot.on(admin_cmd(pattern=r"gban(?: |$)(.*)"))
