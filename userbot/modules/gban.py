@@ -2,7 +2,7 @@
 # Don't remove these lines else Gey...
 
 # _______________________________________________________________________________________________________________
-
+from userbot import bot, CMD_HELP
 
 from telethon.tl.functions.contacts import BlockRequest, UnblockRequest
 from userbot.events import register
