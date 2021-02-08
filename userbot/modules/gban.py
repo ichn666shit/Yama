@@ -13,10 +13,12 @@ from telethon.errors import BadRequestError
 from telethon.tl.functions.channels import EditBannedRequest
 from telethon.tl.functions.messages import ImportChatInviteRequest
 
+from userbot import BOTLOG, BOTLOG_CHATID, CMD_HELP
+from userbot.events import register
 
 
-@bot.on(admin_cmd(pattern=r"gban(?: |$)(.*)"))
-@bot.on(sudo_cmd(pattern=r"gban(?: |$)(.*)", allow_sudo=True))
+
+@register(outgoing=True, pattern=r"^\.gban(?: |$)(.*)"
 async def catgban(cat):
     if cat.fwd_from:
         return
@@ -89,8 +91,7 @@ async def catgban(cat):
         )
 
 
-@bot.on(admin_cmd(pattern=r"ungban(?: |$)(.*)"))
-@bot.on(sudo_cmd(pattern=r"ungban(?: |$)(.*)", allow_sudo=True))
+@register(outgoing=True, pattern=r"^\.ungban(?: |$)(.*)"
 async def catgban(cat):
     if cat.fwd_from:
         return
@@ -145,9 +146,7 @@ async def catgban(cat):
         )
 
 
-@bot.on(admin_cmd(pattern="listgban$"))
-@bot.on(sudo_cmd(pattern=r"listgban$", allow_sudo=True))
-async def gablist(event):
+@register(outgoing=True, pattern=r"^\.glist(?: |$)(.*)"
     if event.fwd_from:
         return
     gbanned_users = gban_sql.get_all_gbanned()
