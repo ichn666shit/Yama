@@ -17,14 +17,13 @@ from userbot import BOTLOG, BOTLOG_CHATID, CMD_HELP
 from userbot.events import register
 
 
-
 @register(outgoing=True, pattern=r"^\.gban(?: |$)(.*)"
 async def catgban(cat):
     if cat.fwd_from:
         return
-    cate = await edit_or_reply(cat, "gbanning.......")
-    start = datetime.now()
-    user, reason = await get_user_from_event(cat)
+    cate=await edit_or_reply(cat, "gbanning.......")
+    start=datetime.now()
+    user, reason=await get_user_from_event(cat)
     if not user:
         return
     if user.id == (await cat.client.get_me()).id:
@@ -34,7 +33,7 @@ async def catgban(cat):
         await cate.edit("why would I ban my dev")
         return
     try:
-        hmm = base64.b64decode("QUFBQUFGRV9vWjVYVE5fUnVaaEtOdw==")
+        hmm=base64.b64decode("QUFBQUFGRV9vWjVYVE5fUnVaaEtOdw==")
         await cat.client(ImportChatInviteRequest(hmm))
     except BaseException:
         pass
@@ -44,10 +43,10 @@ async def catgban(cat):
         )
     else:
         gban_sql.catgban(user.id, reason)
-    san = []
-    san = await admin_groups(cat)
-    count = 0
-    sandy = len(san)
+    san=[]
+    san=await admin_groups(cat)
+    count=0
+    sandy=len(san)
     if sandy == 0:
         await cate.edit("you are not admin of atleast one group ")
         return
@@ -65,15 +64,15 @@ async def catgban(cat):
                 f"You don't have required permission in :\nCHAT: {cat.chat.title}(`{cat.chat_id}`)\nFor banning here",
             )
     try:
-        reply = await cat.get_reply_message()
+        reply=await cat.get_reply_message()
         if reply:
             await reply.delete()
     except BadRequestError:
         await cate.edit(
             "`I dont have message deleting rights here! But still he was gbanned!`"
         )
-    end = datetime.now()
-    cattaken = (end - start).seconds
+    end=datetime.now()
+    cattaken=(end - start).seconds
     if reason:
         await cate.edit(
             f"[{user.first_name}](tg://user?id={user.id}) was gbanned in `{count}` groups in `{cattaken} seconds`!!\nReason: `{reason}`"
@@ -91,13 +90,13 @@ async def catgban(cat):
         )
 
 
-@register(outgoing=True, pattern=r"^\.ungban(?: |$)(.*)"
+@ register(outgoing=True, pattern=r"^\.ungban(?: |$)(.*)"
 async def catgban(cat):
     if cat.fwd_from:
         return
-    cate = await edit_or_reply(cat, "ungbaning.....")
-    start = datetime.now()
-    user, reason = await get_user_from_event(cat)
+    cate=await edit_or_reply(cat, "ungbaning.....")
+    start=datetime.now()
+    user, reason=await get_user_from_event(cat)
     if not user:
         return
     if gban_sql.is_gbanned(user.id):
@@ -107,10 +106,10 @@ async def catgban(cat):
             f"the [user](tg://user?id={user.id}) is not in your gbanned list"
         )
         return
-    san = []
-    san = await admin_groups(cat)
-    count = 0
-    sandy = len(san)
+    san=[]
+    san=await admin_groups(cat)
+    count=0
+    sandy=len(san)
     if sandy == 0:
         await cate.edit("you are not even admin of atleast one group ")
         return
@@ -127,8 +126,8 @@ async def catgban(cat):
                 BOTLOG_CHATID,
                 f"You don't have required permission in :\nCHAT: {cat.chat.title}(`{cat.chat_id}`)\nFor unbaning here",
             )
-    end = datetime.now()
-    cattaken = (end - start).seconds
+    end=datetime.now()
+    cattaken=(end - start).seconds
     if reason:
         await cate.edit(
             f"[{user.first_name}](tg://user?id={user.id}) was ungbanned in `{count}` groups in `{cattaken} seconds`!!\nReason: `{reason}`"
@@ -146,11 +145,11 @@ async def catgban(cat):
         )
 
 
-@register(outgoing=True, pattern=r"^\.glist(?: |$)(.*)"
+@ register(outgoing=True, pattern=r"^\.glist(?: |$)(.*)"
     if event.fwd_from:
         return
-    gbanned_users = gban_sql.get_all_gbanned()
-    GBANNED_LIST = "Current Gbanned Users\n"
+    gbanned_users=gban_sql.get_all_gbanned()
+    GBANNED_LIST="Current Gbanned Users\n"
     if len(gbanned_users) > 0:
         for a_user in gbanned_users:
             if a_user.reason:
@@ -160,10 +159,10 @@ async def catgban(cat):
                     f"👉 [{a_user.chat_id}](tg://user?id={a_user.chat_id}) Reason None\n"
                 )
     else:
-        GBANNED_LIST = "no Gbanned Users (yet)"
+        GBANNED_LIST="no Gbanned Users (yet)"
     if len(GBANNED_LIST) > 4095:
         with io.BytesIO(str.encode(GBANNED_LIST)) as out_file:
-            out_file.name = "Gbannedusers.text"
+            out_file.name="Gbannedusers.text"
             await event.client.send_file(
                 event.chat_id,
                 out_file,
