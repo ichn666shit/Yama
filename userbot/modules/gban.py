@@ -180,8 +180,6 @@ async def gunben(userbot):
     )
 
 
-
-
 CMD_HELP.update({
     "gban": "\
 `.gban`\
