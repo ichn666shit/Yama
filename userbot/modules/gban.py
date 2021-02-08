@@ -35,7 +35,7 @@ async def get_full_user(event):
         try:
             user_obj = await event.client.get_entity(user)
         except Exception as err:
-            return await event.edit("Error... Please report at @Dark_cobra_support_group", str(err))
+            return await event.edit("Error... Please report at @NightCoreUserbot", str(err))
     return user_obj, extra
 
 
@@ -122,7 +122,7 @@ async def gunben(userbot):
     sender = await dc.get_sender()
     me = await dc.client.get_me()
     if not sender.id == me.id:
-        dark = await dc.reply("`Wait Let Me ungban this nub nibba again😂`")
+        dark = await dc.reply("`Wait Let Me ungban again😂`")
     else:
         dark = await dc.edit("Weit nd watch ! ")
     me = await userbot.client.get_me()
@@ -165,7 +165,7 @@ async def gunben(userbot):
             try:
                 await userbot.client.edit_permissions(i, user, send_messages=True)
                 a += 1
-                await dark.edit(f"**Ungbaning this nub nibba.. AFFECTED CHATS - {a} **")
+                await dark.edit(f"**Ungbaning .. AFFECTED CHATS - {a} **")
             except BaseException:
                 b += 1
     else:
@@ -178,3 +178,14 @@ async def gunben(userbot):
     return await dark.edit(
         f"**Ungbanned this noon nibba..getting him another chance... ; USER - [{user.first_name}](tg://user?id={user.id}) CHATS : {a} **"
     )
+
+
+
+
+CMD_HELP.update({
+    "gban": "\
+`.gban`\
+\nUsage: Globally Ban users from all the Group Administrations bots where you are SUDO.\
+\n\n`.ungban reason`\
+\nUsage: Globally unBan users from all the Group Administrations bots where you are SUDO"
+})
