@@ -12,8 +12,6 @@ from datetime import datetime
 from telethon.errors import BadRequestError
 from telethon.tl.functions.channels import EditBannedRequest
 from telethon.tl.functions.messages import ImportChatInviteRequest
-from telethon.tl.functions.users import GetFullUserRequest
-from telethon.tl.types import ChatBannedRights
 
 import userbot.plugins.sql_helper.gban_sql_helper as gban_sql
 
