@@ -4,7 +4,7 @@ from userbot import CMD_HELP
 from userbot.events import register
 
 
-@register(outgoing=True, pattern=r"^\.santet(?: |$)(.*)")
+@register(outgoing=True, pattern=r"^\.petrus(?: |$)(.*)")
 async def typewriter(typew):
     typew.pattern_match.group(1)
     await typew.edit("`Operasi petrus dilaksanakeun!1!1 ツ`")
@@ -319,7 +319,7 @@ async def typewriter(typew):
 
 CMD_HELP.update(
     {
-        "santet": "`.santet`\
-        \nUsage: Canda Santet."
+        "santet": "`.petrus`\
+        \nUsage: canda petrus."
     }
 )
