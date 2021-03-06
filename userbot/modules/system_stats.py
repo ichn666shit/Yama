@@ -231,7 +231,7 @@ async def amireallyalive(alive):
     await bot.get_me()
     uptime = await get_readable_time((time.time() - StartTime))
     output = (
-        f" `Yama` is running on  `{UPSTREAM_REPO_BRANCH}`\n"
+        f" `HAYO KEPO REPO APA.... running on  `{UPSTREAM_REPO_BRANCH}`\n"
         f" `User     :`{DEFAULTUSER}\n"
         f" `Telethon :`v {version.__version__}\n"
         f" `Python   :`v {python_version()}\n"
