@@ -5,21 +5,21 @@ from userbot.events import register
 from userbot import bot, TEMP_DOWNLOAD_DIRECTORY, CMD_HELP
 
 
-@register(outgoing=True, pattern=r'^.kamuii(:? |$)([1-8])?')
+@register(outgoing=True, pattern=r'^.editjlk(:? |$)([1-8])?')
 async def _(fry):
-    await fry.edit("`Kamuiii......`")
+    await fry.edit("`nonjok doi bagen mukanya penyok woakowkw`")
     level = fry.pattern_match.group(2)
     if fry.fwd_from:
         return
     if not fry.reply_to_msg_id:
-        await fry.edit("`Balas di Sticker Goblok!!...`")
+        await fry.edit("`bales ke stiker ato poto gblk...`")
         return
     reply_message = await fry.get_reply_message()
     if not reply_message.media:
-        await fry.edit("`Gambar tidak di dukung...`")
+        await fry.edit("`gabisa, coba poto laen jon...`")
         return
     if reply_message.sender.bot:
-        await fry.edit("`Balas di Sticker Goblok!!!...`")
+        await fry.edit("`bales ke stiker ato poto gblk...`")
         return
     chat = "@image_deepfrybot"
     message_id_to_reply = fry.message.reply_to_msg_id
@@ -74,14 +74,14 @@ async def _(fry):
     if fry.fwd_from:
         return
     if not fry.reply_to_msg_id:
-        await fry.edit("`Balas di Sticker Goblok!!...`")
+        await fry.edit("`bales ke stiker ato poto gblk...`")
         return
     reply_message = await fry.get_reply_message()
     if not reply_message.media:
-        await fry.edit("`Gambar tidak di dukung...`")
+        await fry.edit("`gabisa, coba poto laen jon...`")
         return
     if reply_message.sender.bot:
-        await fry.edit("`Balas di Sticker Goblok!!!...`")
+        await fry.edit("`bales ke stiker ato poto gblk...`")
         return
     chat = "@image_deepfrybot"
     message_id_to_reply = fry.message.reply_to_msg_id
@@ -100,10 +100,10 @@ async def _(fry):
             """ - don't spam notif - """
             await bot.send_read_acknowledge(conv.chat_id)
         except YouBlockedUserError:
-            await fry.reply("`Please unblock` @image_deepfrybot`...`")
+            await fry.reply("`lu ngeblokir` @image_deepfrybot`, buka dulu blokirannya..`")
             return
         if response.text.startswith("Forward"):
-            await fry.edit("`Please disable your forward privacy setting...`")
+            await fry.edit("`matiin settingan privasi forward lu dulu...`")
         else:
             downloaded_file_name = await fry.client.download_media(
                 response.media,
@@ -130,7 +130,7 @@ async def _(fry):
 
 
 CMD_HELP.update({
-    "kamuii":
-    "`.kamuii` or `.kamuii` [level(1-8)]"
+    "edit jelek":
+    "`.editjlk` or `.editjlk` [level(1-8)]"
     "\nUsage: deepfry image/sticker from the reply."
 })
