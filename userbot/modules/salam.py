@@ -1,4 +1,5 @@
 from platform import uname
+from time import sleep
 
 from userbot import ALIVE_NAME, CMD_HELP
 from userbot.events import register
@@ -12,7 +13,7 @@ DEFAULTUSER = str(ALIVE_NAME) if ALIVE_NAME else uname().node
 async def typewriter(typew):
     typew.pattern_match.group(1)
     await typew.edit("salam biar ~~ganteng~~ berkah")
-    sleep(2)
+    sleep(1)
     await typew.edit("assalamu'alaikum")
 
 
@@ -20,17 +21,17 @@ async def typewriter(typew):
 async def typewriter(typew):
     typew.pattern_match.group(1)
     await typew.edit("salam biar ~~ganteng~~ berkah")
-    sleep(2)
+    sleep(1)
     await typew.edit("Assalamu'alaikum")
 
 
-@register(outgoing=True, pattern="^.L(?: |$)(.*)")
+@register(outgoing=True, pattern="^.lll(?: |$)(.*)")
 async def typewriter(typew):
     typew.pattern_match.group(1)
     await typew.edit("Wa'alaikumussalam")
 
 
-@register(outgoing=True, pattern="^.l(?: |$)(.*)")
+@register(outgoing=True, pattern="^.lll(?: |$)(.*)")
 async def typewriter(typew):
     typew.pattern_match.group(1)
     await typew.edit("Wa'alaikumussalam")
@@ -40,7 +41,7 @@ CMD_HELP.update(
     {
         "salam": "`.ppp`\
 \nUsage: Untuk Memberi salam.\
-\n\n`.L`\
+\n\n`.lll`\
 \nUsage: Untuk Menjawab Salam."
     }
 )
