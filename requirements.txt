@@ -78,8 +78,6 @@ jotquote
 csvfaker
 pytube
 pymongo[srv]
-youtube_search
-youtube-dl
 justwatch
 deezloader
 nekos.py
@@ -96,3 +94,5 @@ cairosvg
 colour
 scipy
 wordcloud
+youtube_dl
+youtube-search-python
