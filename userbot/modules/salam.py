@@ -17,14 +17,6 @@ async def typewriter(typew):
     await typew.edit("assalamu'alaikum")
 
 
-@register(outgoing=True, pattern="^.ppp(?: |$)(.*)")
-async def typewriter(typew):
-    typew.pattern_match.group(1)
-    await typew.edit("salam biar ~~ganteng~~ berkah")
-    sleep(1)
-    await typew.edit("Assalamu'alaikum")
-
-
 @register(outgoing=True, pattern="^.lll(?: |$)(.*)")
 async def typewriter(typew):
     typew.pattern_match.group(1)
