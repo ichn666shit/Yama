@@ -319,7 +319,7 @@ async def typewriter(typew):
 
 CMD_HELP.update(
     {
-        "santet": "`.petrus`\
+        "petrus": "`.petrus`\
         \nUsage: canda petrus."
     }
 )
