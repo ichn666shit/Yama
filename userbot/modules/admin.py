@@ -34,17 +34,17 @@ from userbot import BOTLOG, BOTLOG_CHATID, CMD_HELP
 from userbot.events import register
 
 # =================== CONSTANT ===================
-PP_TOO_SMOL = "`The image is too small`"
-PP_ERROR = "`Failure while processing the image`"
-NO_ADMIN = "`I am not an admin!`"
-NO_PERM = "`I don't have sufficient permissions!`"
+PP_TOO_SMOL = "`potonya kekecilan jon`"
+PP_ERROR = "`hmmmm gagal`"
+NO_ADMIN = "`lu bukan admin ege gblk`"
+NO_PERM = "`lu gaada izin buat ngubah`"
 NO_SQL = "`Running on Non-SQL mode!`"
 
-CHAT_PP_CHANGED = "`Chat Picture Changed`"
+CHAT_PP_CHANGED = "`done bruh`"
 CHAT_PP_ERROR = (
-    "`Some issue with updating the pic,`"
-    "`maybe coz I'm not an admin,`"
-    "`or don't have enough rights.`"
+    "`ada masalah saat memproses, huft,`"
+    "`keknya karna gua bukan admin,`"
+    "`atau gaada izin(?).`"
 )
 INVALID_MEDIA = "`Invalid Extension`"
 
@@ -144,7 +144,7 @@ async def promote(promt):
     # Try to promote if current user is admin or creator
     try:
         await promt.client(EditAdminRequest(promt.chat_id, user.id, new_rights, rank))
-        await promt.edit("`Promoted Successfully!`")
+        await promt.edit("`terpromote!`")
         await sleep(5)
         await promt.delete()
 
@@ -174,7 +174,7 @@ async def demote(dmod):
         return await dmod.edit(NO_ADMIN)
 
     # If passing, declare that we're going to demote
-    await dmod.edit("`Demoting...`")
+    await dmod.edit("`ngedemote...`")
     rank = "admeme"  # dummy rank, lol.
     user = await get_user_from_event(dmod)
     user = user[0]
@@ -198,7 +198,7 @@ async def demote(dmod):
     # Assume we don't have permission to demote
     except BadRequestError:
         return await dmod.edit(NO_PERM)
-    await dmod.edit("`Demoted Successfully!`")
+    await dmod.edit("`berhasil!`")
     await sleep(5)
     await dmod.delete()
 
@@ -241,7 +241,7 @@ async def ban(bon):
             await reply.delete()
     except BadRequestError:
         return await bon.edit(
-            "`I dont have message nuking rights! But still he was banned!`"
+            "`ter b a n n e d!`"
         )
     # Delete message and then tell that the command
     # is done gracefully
@@ -277,7 +277,7 @@ async def nothanos(unbon):
         return await unbon.edit(NO_ADMIN)
 
     # If everything goes well...
-    await unbon.edit("`Unbanning...`")
+    await unbon.edit("`otw unban...`")
 
     user = await get_user_from_event(unbon)
     user = user[0]
@@ -286,7 +286,7 @@ async def nothanos(unbon):
 
     try:
         await unbon.client(EditBannedRequest(unbon.chat_id, user.id, UNBAN_RIGHTS))
-        await unbon.edit("```Unbanned Successfully```")
+        await unbon.edit("```dah gua unban```")
         await sleep(3)
         await unbon.delete()
 
@@ -298,7 +298,7 @@ async def nothanos(unbon):
                 f"CHAT: {unbon.chat.title}(`{unbon.chat_id}`)",
             )
     except UserIdInvalidError:
-        await unbon.edit("`Uh oh my unban logic broke!`")
+        await unbon.edit("`eeeh gabisa unban!`")
 
 
 @register(outgoing=True, pattern=r"^\.mute(?: |$)(.*)")
@@ -330,7 +330,7 @@ async def spider(spdr):
         )
 
     # If everything goes well, do announcing and mute
-    await spdr.edit("`Gets a tape!`")
+    await spdr.edit("`E M U T!`")
     if mute(spdr.chat_id, user.id) is False:
         return await spdr.edit("`Error! User probably already muted.`")
     else:
@@ -341,7 +341,7 @@ async def spider(spdr):
             if reason:
                 await spdr.edit(f"`Safely taped !!`\nReason: {reason}")
             else:
-                await spdr.edit("`Safely taped !!`")
+                await spdr.edit("`E M U T !!`")
 
             # Announce to logging group
             if BOTLOG:
@@ -628,7 +628,7 @@ async def pin(msg):
     except BadRequestError:
         return await msg.edit(NO_PERM)
 
-    await msg.edit("`Pinned Successfully!`")
+    await msg.edit("`ngoghey, terpinned!`")
     await sleep(2)
     await msg.delete()
 
