@@ -96,7 +96,7 @@ async def mention_afk(mention):
                     )
                 else:
                     await mention.reply(
-                        f"**Saya Lagi Off.** (Since: {afk_str})"
+                        f"**gua lagi afk.** (dari: {afk_str})"
                         "\n"
                     )
             if mention.sender_id is not None:
@@ -167,7 +167,7 @@ async def afk_on_pm(sender):
                     )
                 else:
                     await sender.reply(
-                        f"**Saya Lagi Off.** (Since: {afk_str})"
+                        f"**gua lagi afk.** (Since: {afk_str})"
                         "\n"
                     )
                 USERS.update({sender.sender_id: 1})
@@ -207,9 +207,9 @@ async def set_afk(afk_e):
     afk_start = start1.replace(microsecond=0)
     if string:
         AFKREASON = string
-        await afk_e.edit("**Bye Kintil Lu Semua!**" f"\nReason: `{string}`")
+        await afk_e.edit("**Bye, mo kocok komchoi dulu!**" f"\nReason: `{string}`")
     else:
-        await afk_e.edit("**Bye Kintil Lu Semua!**")
+        await afk_e.edit("**Bye, mo kocok komchoi dulu!**")
     if BOTLOG:
         await afk_e.client.send_message(BOTLOG_CHATID, "#AFK\nGua Afk Dulu Mang!")
     ISAFK = True
